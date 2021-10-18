@@ -1,5 +1,6 @@
 s = "aB:cD"
 
+
 # perform the transformation
 def transform_string():
     # Insert your code here.
@@ -22,4 +23,3 @@ def transform_string():
     # You don't need to change the following line.
     # It simply returns the string created above.
     return res
-

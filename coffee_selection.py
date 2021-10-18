@@ -16,15 +16,23 @@ def get_sane_user_input():
             continue
     return selection
 
+
 def get_amount(selection):
-    if selection == 1: return 15, 15
-    elif selection == 2: return 60, 15
-    elif selection == 3: return 60, 30
-    elif selection == 4: return 30, 15
+    if selection == 1:
+        return 15, 15
+    elif selection == 2:
+        return 60, 15
+    elif selection == 3:
+        return 60, 30
+    elif selection == 4:
+        return 30, 15
+
 
 def basic_coffe_maker():
     selection = get_sane_user_input()
     water, coffee = get_amount(selection)
 
     print(f"Using {water}ml of water and  {coffee}g of coffee")
+
+
 basic_coffe_maker()
