@@ -16,19 +16,19 @@ def process_data(path_reading, path_writing):
                 return
         else:
             with open(path_writing, "w") as output_file:
-                output_file.write("Firstname,Lastname")
                 for line in lines:
-                    if "Name" in line:
-                        continue
                     if line.startswith("\n"):
                         output_file.write("\n,")
-                    if ";" in line:
+                    elif ";" in line:
                         semicolon = line.find(";")
                         line = line.replace("\n", "")
                         output_file.write("\n" + line[semicolon + 2:] + "," + line[:semicolon])
                     elif " " in line:
                         line = line.replace(" ", ",")
-                        output_file.write("\n" + line[:-1])
+                        line = line.replace("\n", "")
+                        output_file.write("\n" + line)
+                    else:
+                        output_file.write("Firstname,Lastname")
 
 
 # The following line calls your solution function with the provided input file
