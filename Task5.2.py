@@ -7,7 +7,7 @@ def analyze(posts):
     for lines in posts:
         for word in lines.split():
             if word.startswith("#"):
-                word = word.replace("#", "")
+                word = word.replace("#", "", 1)
                 if word.isalpha():
                     if word not in hashtags:
                         hashtags[word] = 1
@@ -17,10 +17,17 @@ def analyze(posts):
                     for char in word:
                         if not char.isalpha():
                             bad_index = word.index(char)
-                            if word[:bad_index] not in hashtags:
+                            if char == "#" and word[bad_index + 1].isalpha():
+                                for char in word[bad_index:]:
+                                    if word[:bad_index] not in hashtags:
+                                        hashtags[word[:bad_index]] = 1
+                                    else:
+                                        hashtags[word[:bad_index]] += 1
+                            elif word[:bad_index] not in hashtags:
                                 hashtags[word[:bad_index]] = 1
                             else:
                                 hashtags[word[:bad_index]] += 1
+
     return hashtags
 
 
@@ -29,7 +36,7 @@ def analyze(posts):
 # However, we encourage you to write tests, because then you
 # can easily test many different values on every "Test & Run"!
 posts = [
-    "hi #weekend",
+    "hi #wee#kend",
     "good morning #zurich #limmat",
     "spend my #weekend in #zurich",
     "#zurich <3"]
