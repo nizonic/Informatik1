@@ -27,7 +27,6 @@ def analyze(posts):
                                 hashtags[word[:bad_index]] = 1
                             else:
                                 hashtags[word[:bad_index]] += 1
-
     return hashtags
 
 
