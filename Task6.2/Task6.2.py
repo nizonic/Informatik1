@@ -10,7 +10,7 @@ def preprocess(records):
     for record in records:
         clean_person = []
         if "" in record[:-1] or "undefined" in record[:-1] or "unknown" in record[:-1]:
-                continue
+            continue
         clean_person.append(True) if record[0] in survived_values else clean_person.append(False)
         if 0 < int(record[1]) <= 3:
             clean_person.append(int(record[1]))
@@ -29,9 +29,9 @@ def preprocess(records):
         clean.append(tuple(clean_person))
     return (header, clean)
 
+    # The following part calls the function and prints the return
 
 
-        # The following part calls the function and prints the return
 # value to the Console. This way you can check what it does.
 # However, we encourage you to write tests, because then you
 # can easily test many different values on every "Test & Run"!
@@ -51,12 +51,11 @@ titanic = [
 ]
 
 babaui = [
-            ('Survived', 'Pclass', 'Name', 'Gender', 'Age', 'Fare'),
-            ('no', '3', 'Braund Mr. Owen Harris', 'male', '22', '7.25'),
-            ('Dead', '3', 'Braund Ms. Maria', 'Female', '21', ''),
-            ('Yes', '1', 'Cumings Mrs. John Bradley (Florence Briggs Thayer)', 'F', '38', '71.28'),
-            ('', '3', 'Vander Planke Miss. Augusta', 'female', '', ''),
-            ('Dead', '4', 'Lennon Mr. Denis', 'male', '13', '15.5')
+    ('Survived', 'Pclass', 'Name', 'Gender', 'Age', 'Fare'),
+    ('no', '3', 'Braund Mr. Owen Harris', 'male', '22', '7.25'),
+    ('Dead', '3', 'Braund Ms. Maria', 'Female', '21', ''),
+    ('Yes', '1', 'Cumings Mrs. John Bradley (Florence Briggs Thayer)', 'F', '38', '71.28'),
+    ('', '3', 'Vander Planke Miss. Augusta', 'female', '', ''),
+    ('Dead', '4', 'Lennon Mr. Denis', 'male', '13', '15.5')
 ]
 print(preprocess(babaui))
-
