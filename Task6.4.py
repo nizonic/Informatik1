@@ -24,26 +24,16 @@ def visualize(records):
             third += 1
             if people[0]:
                 third_alive += 1
-    classes = "== {c}st Class =="
-    total = "Total |{stars:<20}| {percentage:%}"
-    alive = "Alive |{stars:<20}| {percentage:%}"
+    total = "Total |{stars:<20}| {percentage:.1%}"
+    alive = "Alive |{stars:<20}| {percentage:.1%}"
     total_count = first + second + third
-    first_percentage = total_count // first
-    second_percentage = total_count // second
-    third_percentage = total_count // third
-    f_ratio = first_alive / first * 100 // 5
-    s_ratio = second_alive / second * 100 // 5
-    t_ratio = third_alive / third * 100 // 5
-    first_class = classes.format(c=1)
-    second_class = classes.format(c=2)
-    third_class = classes.format(c=3)
-    first_total = total.format(stars=first_percentage // 5 * "*", percentage=first_percentage)
-    second_total = total.format(stars=second_percentage // 5 * "*", percentage=second_percentage)
-    third_total = total.format(stars=third_percentage // 5 * "*", percentage=third_percentage)
-    f_alive = alive.format(stars=int(f_ratio) * "*", percentage=first_alive / first)
-    s_alive = alive.format(stars=int(s_ratio) * "*", percentage=second_alive / second)
-    t_alive = alive.format(stars=int(t_ratio) * "*", percentage = third_alive / third)
-    all = classes.format(c=1) + "\n" + total.format(stars=first_percentage // 5 * "*", percentage=first_percentage) + "\n" + alive.format(stars=int(f_ratio) * "*", percentage=first_alive / first) + "\n" + classes.format(c=2) + "\n" + total.format(stars=second_percentage // 5 * "*", percentage=second_percentage) + "\n" + alive.format(stars=int(s_ratio) * "*", percentage=second_alive / second) + "\n" + classes.format(c=3) + "\n" + total.format(stars=third_percentage // 5 * "*", percentage=third_percentage)  + "\n" + alive.format(stars=int(t_ratio) * "*", percentage = third_alive / third)
+    first_percentage = first / total_count
+    second_percentage = second / total_count
+    third_percentage = third / total_count
+    f_ratio = round(first_alive / first * 100 / 5)
+    s_ratio = round(second_alive / second * 100 / 5)
+    t_ratio = round(third_alive / third * 100 / 5)
+    all = "== 1st Class ==" + "\n" + total.format(stars=round(int(first_percentage*100) / 5) * "*", percentage=first_percentage) + "\n" + alive.format(stars=int(f_ratio) * "*", percentage=first_alive / first) + "\n" + "== 2nd Class ==" + "\n" + total.format(stars=round(int(second_percentage*100) / 5) * "*", percentage=second_percentage) + "\n" + alive.format(stars=int(s_ratio) * "*", percentage=second_alive / second) + "\n" + "== 3rd Class ==" + "\n" + total.format(stars=round(int(third_percentage*100) / 5) * "*", percentage=third_percentage)  + "\n" + alive.format(stars=int(t_ratio) * "*", percentage = third_alive / third)
     return all
 
 
