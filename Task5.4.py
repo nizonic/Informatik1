@@ -24,5 +24,7 @@ def get_possible_nrs(n):
 
 # For this particular number, the function should find the
 # last element in wa_nrs
-print(get_possible_nrs("079266313"))
+
+if __name__ == "__main__":
+    print(get_possible_nrs("079266313"))
 

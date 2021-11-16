@@ -47,3 +47,7 @@ class FineCalculatorTest(TestCase):
         actual = fine_calculator("urban", 250)
         expected = 160000
         self.assertEqual(expected, actual)
+    def test_round(self):
+        actual = fine_calculator("motorway", 120.999999999999999999999999999999999999999999999999)
+        expected = 0
+        self.assertEqual(expected, actual)

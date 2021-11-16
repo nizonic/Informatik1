@@ -30,4 +30,5 @@ def fine_calculator(area,speed):
 			return 0
 		return round(0.5*pow((speed-120)/1.2, 2))
 
-print(fine_calculator("Urban".lower(), 250))
+if __name__ == "__main__":
+	print(fine_calculator("motorway", 120.99999999999999999999999999999999999999999999))

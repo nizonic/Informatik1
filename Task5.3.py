@@ -22,4 +22,6 @@ def reverse_index(dataset):
     return index_dictionary
 
 # You can see the output of your function here
-print(reverse_index(dataset))
+
+if __name__ == "__main__":
+    print(reverse_index(dataset))

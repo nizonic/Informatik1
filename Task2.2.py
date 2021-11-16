@@ -16,5 +16,5 @@ def calculate():
     # It simply returns the value calculated above.
     return res
 
-
-print(calculate())
+if __name__ == "__main__":
+    print(calculate())

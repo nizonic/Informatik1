@@ -29,4 +29,6 @@ def merge(a, b):
 # value to the Console. This way you can check what it does.
 # However, we encourage you to write tests, because then you
 # can easily test many different values on every "Test & Run"!
-print(merge([0, 1, 2], [5, 6]))
+
+if __name__ == "__main__":
+    print(merge([0, 1, 2], [5, 6]))

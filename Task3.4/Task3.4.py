@@ -35,4 +35,5 @@ def build_string_pyramid():
 # The following line calls the function and prints the return
 # value to the Console. This way you can check what it does.
 # See the console output and compare it to the image in the task description
-print(build_string_pyramid())
+if __name__ == "__main__":
+    print(build_string_pyramid())

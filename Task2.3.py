@@ -13,5 +13,5 @@ def generate_greeting():
     # It simply returns the string created above.
     return greeting
 
-
-print(generate_greeting())
+if __name__ == "__main__":
+    print(generate_greeting())

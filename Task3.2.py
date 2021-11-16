@@ -25,4 +25,5 @@ def is_valid():
 
 # The following line calls the function and prints the return
 # value to the Console. This way you can check what it does.
-print(is_valid())
+if __name__ == "__main__":
+    print(is_valid())
