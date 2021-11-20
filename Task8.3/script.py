@@ -26,15 +26,20 @@ def calculate_factorial(inp):
     from math import factorial
     if inp == None:
         return None
-    if isinstance(inp, str):
-        try:
-            int(inp)
-        except ValueError:
-            raise TypeError("TypeError: string")
-    if int(inp) < 0:
-        raise ValueError("ValueError: number negative")
-    if int(inp) > 10:
-        raise ValueError("ValueError: number too large")
+
+    elif isinstance(inp, str):
+        if inp.isnumeric():
+            pass
+        elif inp.find("-") == 0:
+            if inp[1:].find("-") > -1:
+                raise TypeError("TypeError: string")
+            elif not inp.isnumeric():
+                raise TypeError("TypeError: string")
+    if isinstance(inp, int):
+        if int(inp) < 0:
+            raise ValueError("ValueError: number negative")
+        if int(inp) > 10:
+            raise ValueError("ValueError: number too large")
     return factorial(int(inp))
 
 

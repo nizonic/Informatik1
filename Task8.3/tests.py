@@ -29,5 +29,6 @@ class MyTests(TestCase):
     def test_edge(self):
         actual = calculate_factorial("-5-2")
         expected = TypeError("TypeError: string")
-        with self.assertRaises(TypeError):
-            calculate_factorial("-5-2")
+        self.assertEqual(expected, actual)
+        #with self.assertRaises(TypeError):
+        #    calculate_factorial("-5-2")
