@@ -10,8 +10,8 @@ class MyTests(TestCase):
         self.assertEqual(expected, actual)
 
     def test_string(self):
-        actual = calculate_factorial("12,w")
-        self.fail(calculate_factorial("12,w"))
+        with self.assertRaises(TypeError):
+            calculate_factorial("12,w")
 
     def test_h_str(self):
         with self.assertRaises(ValueError):
