@@ -24,22 +24,24 @@ def fuzzer(min_length, max_length, char_start, char_end):
 # You must not rename the function or change its list of parameters.
 def calculate_factorial(inp):
     from math import factorial
-    if inp == None:
+    if inp is None:
         return None
 
     elif isinstance(inp, str):
         if inp.isnumeric():
             pass
-        elif inp.find("-") == 0:
+        elif inp.startswith("-"):
             if inp[1:].find("-") > -1:
                 raise TypeError("TypeError: string")
-            elif not inp.isnumeric():
+            elif not inp[1:].isnumeric():
                 raise TypeError("TypeError: string")
-    if isinstance(inp, int):
-        if int(inp) < 0:
-            raise ValueError("ValueError: number negative")
-        if int(inp) > 10:
-            raise ValueError("ValueError: number too large")
+        elif not inp.isnumeric():
+            raise TypeError("TypeError: string")
+
+    if int(inp) < 0:
+        raise ValueError("ValueError: number negative")
+    if int(inp) > 10:
+        raise ValueError("ValueError: number too large")
     return factorial(int(inp))
 
 
