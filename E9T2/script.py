@@ -2,42 +2,40 @@
 
 class Fridge:
     def __init__(self):
-        self.storage = []
+        self.__storage = []
+
+    def store(self, tup):
+        self.__storage.append(tup)
+        self.__storage.sort()
+
+    def take(self, item):
+        if item not in self.__storage:
+            raise Warning()
+        self.__storage.remove(item)
+        return item
+
+    def find(self, name):
+        for item in self.__storage:
+            if name is item[1]:
+                return item
+        return None
+
+    def take_before(self, date):
+        going_bad = [items for items in self.__storage if items[0] < date]
+        self.__storage = [items for items in self.__storage if items not in going_bad]
+        return going_bad
 
     def __next__(self):
         pass
 
     def __iter__(self):
-        return iter(self.storage)
+        return iter(self.__storage)
 
     def __len__(self):
-        return len(self.storage)
+        return len(self.__storage)
 
     def __str__(self):
-        return f"Contents of fridge:\n{self.storage}"
-
-    def find(self, name):
-        for item in self.storage:
-            if name is item[1]:
-                return f"You have {name} you should eat by {item[0]} with the index {self.storage.index(item)}"
-
-    def take(self, item):
-        yes = None
-        for groceries in self.storage:
-            if item is groceries[1]:
-                self.storage.remove(groceries)
-                yes = True
-        if yes is None:
-            return None
-
-    def take_before(self, date):
-        going_bad = [items for items in self.storage if items[0] < date]
-        self.storage = [items for items in self.storage if items not in going_bad]
-        return going_bad
-
-    def store(self, tup):
-        self.storage.append(tup)
-        self.storage.sort()
+        return f"Contents of fridge:\n{self.__storage}"
 
 
 if __name__ == "__main__":
