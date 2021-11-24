@@ -1,5 +1,5 @@
-from public.item import Item
-from public.order import Order
+from item import Item
+from order import Order
 
 
 class Restaurant:
