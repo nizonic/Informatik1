@@ -4,24 +4,31 @@ from order import Order
 
 class Restaurant:
 
-    def __init__(self, restaurant_name, menu_list):
-        self.name = restaurant_name
-        self.menu = menu_list
+    def __init__(self, restaurant_name, menu_list, revenue=0):
+        self.__name = restaurant_name
+        self.__menu = menu_list
+        self.__revenue = revenue
 
     def get_restaurant_name(self):
-        return self.name
+        return self.__name
 
     def get_menu_list(self):
-        return self.menu
+        return self.__menu
 
     def get_order_list(self):
-        pass
+        if not self.__order:
+            return "No order yet"
+        return self.__order
 
     def set_order(self, item_list):
-        pass
+        item_list = [item for item in item_list if item in self.__menu]
+        self.__order = Order(item_list)
+        self.__revenue += self.__order.get_bill_amount()
 
     def get_revenue(self):
-        pass
+        return self.__revenue
+
+
 
 
 # You can play around with your implementation in the body of the following 'if'.
@@ -42,4 +49,8 @@ if __name__ == '__main__':
     restaurant.set_order(order_list)
     # Get the revenue of the restaurant object
     #print(restaurant.get_revenue())
-    print(restaurant.get_restaurant_name())
+    print(restaurant.get_order_list())
+    order_list = [steak, steak, steak, steak]
+    restaurant.set_order(order_list)
+    print(restaurant.get_order_list())
+    print(restaurant.get_revenue())
