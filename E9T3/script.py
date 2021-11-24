@@ -5,13 +5,14 @@ from order import Order
 class Restaurant:
 
     def __init__(self, restaurant_name, menu_list):
-        pass
+        self.name = restaurant_name
+        self.menu = menu_list
 
     def get_restaurant_name(self):
-        pass
+        return self.name
 
     def get_menu_list(self):
-        pass
+        return self.menu
 
     def get_order_list(self):
         pass
@@ -40,4 +41,5 @@ if __name__ == '__main__':
     # Create an order with the order list
     restaurant.set_order(order_list)
     # Get the revenue of the restaurant object
-    print(restaurant.get_revenue())
+    #print(restaurant.get_revenue())
+    print(restaurant.get_restaurant_name())
