@@ -3,6 +3,7 @@
 class Fridge:
     def __init__(self):
         self.__storage = []
+        self.__idx = 0
 
     def store(self, tup):
         self.__storage.append(tup)
@@ -26,7 +27,12 @@ class Fridge:
         return going_bad
 
     def __next__(self):
-        pass
+        try:
+            item = self.__storage[self.__idx]
+        except IndexError:
+            raise StopIteration()
+        self.__idx += 1
+        return item
 
     def __iter__(self):
         return iter(self.__storage)
