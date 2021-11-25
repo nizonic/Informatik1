@@ -8,6 +8,7 @@ class Restaurant:
         self.__name = restaurant_name
         self.__menu = menu_list
         self.__revenue = revenue
+        self.__order = []
 
     def get_restaurant_name(self):
         return self.__name
@@ -22,8 +23,9 @@ class Restaurant:
 
     def set_order(self, item_list):
         item_list = [item for item in item_list if item in self.__menu]
-        self.__order = Order(item_list)
-        self.__revenue += self.__order.get_bill_amount()
+        if item_list:
+            self.__order.append(Order(item_list))
+            self.__revenue += Order(item_list).get_bill_amount()
 
     def get_revenue(self):
         return self.__revenue
@@ -42,7 +44,7 @@ if __name__ == '__main__':
     # Create menu list
     menu_list = [steak, salad, fish]
     # Create order list
-    order_list = [steak, steak, salad, pizza]
+    order_list = []
     # Create restaurant object with name and menu list
     restaurant = Restaurant("Zurich_1", menu_list)
     # Create an order with the order list
