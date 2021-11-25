@@ -50,7 +50,6 @@ if __name__ == '__main__':
     # Get the revenue of the restaurant object
     #print(restaurant.get_revenue())
     print(restaurant.get_order_list())
-    order_list = [steak, steak, steak, steak]
     restaurant.set_order(order_list)
     print(restaurant.get_order_list())
     print(restaurant.get_revenue())
