@@ -6,6 +6,23 @@
 class Matrix:
 
     def __init__(self, matrix):
+        for i in range(len(matrix) -1):
+            if matrix[i] < matrix[i+1]:
+                raise AssertionError
+        if matrix == [[]]:
+            raise AssertionError
+
+        def getDepth(matrix):
+            try:
+                len(matrix)
+                return getDepth(matrix[0]) + 1
+            except:
+                return 0
+
+        if getDepth(matrix) > 2:
+            raise AssertionError
+
+
         self.__matrix = matrix
         # Implement this function and perform required checks
         # create adequate instance variables and check whether they should be private or public
@@ -28,6 +45,19 @@ class Matrix:
     def __hash__(self):
         return hash(tuple([tuple(row) for row in self.__matrix]))
 
+    def __add__(self, other):
+        pass
+
+    def __mul__(self, other):
+        pass
+
+    def __repr__(self):
+        s = ""
+        for line in self.__matrix:
+            s += str(line)
+            if line != self.__matrix[-1]:
+                s += "\n"
+        return s
 
 
 
