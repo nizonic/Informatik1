@@ -5,36 +5,15 @@
 class Matrix:
 
     def __init__(self, matrix):
-        for i in range(len(matrix) -1):
-            if matrix[i] < matrix[i+1]:
-                raise AssertionError
-        if matrix == [[]]:
-            raise AssertionError
-        if not matrix:
-            raise AssertionError
-        def getDepth(matrix):
-            try:
-                len(matrix)
-                return getDepth(matrix[0]) + 1
-            except:
-                return 0
-
-        if getDepth(matrix) > 2:
-            raise AssertionError
-
-
+        assert matrix != [], 'empty list'
+        assert isinstance(matrix, list), 'not a nested list'
+        for row in matrix:
+            assert isinstance(row, list), 'not a nested list'
+            assert row != [], 'empty sublist'
+            assert len(row) == len(matrix[0]), 'matrix not rectangular'
+            for num in row:
+                assert isinstance(num, (int, float)), 'invalid type in sublist'
         self.__matrix = matrix
-        # Implement this function and perform required checks
-        # create adequate instance variables and check whether they should be private or public
-
-
-    # To implement the required functionality, you will also have to implement two more
-    # of the special functions that include a double underscore as per the task description.
-
-
-
-    # DO NOT CHANGE the functions below! Consider also implementing __repr__ and __str__ for nice printing
-
 
     def __eq__(self, other):
         if not isinstance(other, Matrix):
@@ -46,24 +25,40 @@ class Matrix:
         return hash(tuple([tuple(row) for row in self.__matrix]))
 
     def __add__(self, other):
+        assert isinstance(other, Matrix), "not a matrix"
         A = self.__matrix
         B = other.__matrix
-        result = [map(sum, zip(*t)) for t in zip(A, B)]
-        return result
+        assert len(A) == len(B), "rows not equal"
+        assert len(A[0]) == len(B[0]), "columns not equal"
+        result = []
+        for i in range(len(A)):
+            result.append([])
+            for j in range(len(A[0])):
+                result[i].append(0)
+
+            # fill in result
+        for i in range(len(A)):
+            for j in range(len(A[0])):
+                result[i][j] = self.__matrix[i][j] + other.__matrix[i][j]
+        return Matrix(result)
 
     def __mul__(self, other):
+        assert isinstance(other, Matrix), "not a matrix"
         A = self.__matrix
         B = other.__matrix
-        c = []
-        for i in range(0, len(A)):
-            temp = []
-            for j in range(0, len(B[0])):
-                s = 0
-                for k in range(0, len(A[0])):
-                    s += A[i][k] * B[k][j]
-                temp.append(s)
-            c.append(temp)
-        return c
+        assert len(A[0]) == len(B), "1st matrix columns and 2nd matrix rows don't match up"
+        prod = []
+        for i in range(len(A)):
+            prod.append([])
+            for j in range(len(B[0])):
+                prod[i].append(0)
+
+        # fill in prods
+        for i in range(len(A)):
+            for j in range(len(B[0])):
+                for k in range(len(B)):
+                    prod[i][j] += self.__matrix[i][k] * other.__matrix[k][j]
+        return Matrix(prod)
 
     def __repr__(self):
         s = ""
@@ -79,7 +74,7 @@ class Matrix:
 # The contained statements will be ignored while evaluating your solution.
 if __name__ == '__main__':
     M = Matrix([[5,5],[5,5]])
-    T = Matrix([[5,5],[5,5], [2,3]])
+    T = Matrix([[5,5,3],[5,5,3]])
     print(M)
     print(M == T)
     d = {M: "1", T: "2"}
