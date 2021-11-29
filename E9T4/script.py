@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 # The signatures of this class and its public methods are required for the automated grading to work.
 # You must not change the names or the list of parameters.
 # You may introduce private/protected utility methods though.
@@ -11,7 +10,8 @@ class Matrix:
                 raise AssertionError
         if matrix == [[]]:
             raise AssertionError
-
+        if not matrix:
+            raise AssertionError
         def getDepth(matrix):
             try:
                 len(matrix)
@@ -26,7 +26,7 @@ class Matrix:
         self.__matrix = matrix
         # Implement this function and perform required checks
         # create adequate instance variables and check whether they should be private or public
-        pass
+
 
     # To implement the required functionality, you will also have to implement two more
     # of the special functions that include a double underscore as per the task description.
@@ -46,10 +46,24 @@ class Matrix:
         return hash(tuple([tuple(row) for row in self.__matrix]))
 
     def __add__(self, other):
-        pass
+        A = self.__matrix
+        B = other.__matrix
+        result = [map(sum, zip(*t)) for t in zip(A, B)]
+        return result
 
     def __mul__(self, other):
-        pass
+        A = self.__matrix
+        B = self.__matrix
+        c = []
+        for i in range(0, len(A)):
+            temp = []
+            for j in range(0, len(B[0])):
+                s = 0
+                for k in range(0, len(A[0])):
+                    s += A[i][k] * B[k][j]
+                temp.append(s)
+            c.append(temp)
+        return c
 
     def __repr__(self):
         s = ""
@@ -65,10 +79,11 @@ class Matrix:
 # The contained statements will be ignored while evaluating your solution.
 if __name__ == '__main__':
     M = Matrix([[5,5],[5,5]])
-    T = Matrix([[5,5],[5,5]])
+    T = Matrix([[5,5],[5,5], [2,3]])
     print(M)
     print(M == T)
     d = {M: "1", T: "2"}
     d.update({M: "3"})
     print(d)
-
+    C = M * T
+    print(C)
