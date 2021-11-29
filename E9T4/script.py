@@ -53,7 +53,7 @@ class Matrix:
 
     def __mul__(self, other):
         A = self.__matrix
-        B = self.__matrix
+        B = other.__matrix
         c = []
         for i in range(0, len(A)):
             temp = []
