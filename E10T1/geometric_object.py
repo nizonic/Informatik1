@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 
 class GeometricObject(ABC):
     def __init__(self, color, filled):
-        self.color = color
-        self.filled = filled
+        self.__color = color
+        self.__filled = filled
 
     @abstractmethod
     def get_area(self):
@@ -15,14 +15,14 @@ class GeometricObject(ABC):
         pass
 
     def get_color(self):
-        return self.color
+        return self.__color
 
     def set_color(self, color:str):
-        self.color = color
+        self.__color = color
 
     def get_filled(self):
-        self.filled = True
+        return self.__filled
 
     def set_filled(self, filled:bool):
-        set.filled = filled
+        self.__filled = filled
 

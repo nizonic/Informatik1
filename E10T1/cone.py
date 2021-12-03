@@ -19,10 +19,10 @@ class Cone(GeometricObject):
         return self.__slant_height
 
     def get_area(self):
-        return self.__PI * self.__radius**2 + self.__PI * self.__radius * self.__slant_height
+        return round(self.__PI * self.__radius**2 + self.__PI * self.__radius * self.__slant_height, 2)
 
     def get_volume(self):
-        return 1/3 * self.__PI * self.__radius**2 * self.__vertical_height
+        return round(1/3 * self.__PI * self.__radius**2 * self.__vertical_height, 2)
 
 
 if __name__ == "__main__":

@@ -15,10 +15,10 @@ class Cylinder(GeometricObject):
         return self.__height
 
     def get_area(self):
-        return self.__PI * self.__radius ** 2 + 2 * self.__PI * self.__radius * self.__height
+        return round(self.__PI * self.__radius ** 2 + 2 * self.__PI * self.__radius * self.__height, 2)
 
     def get_volume(self):
-        return self.__PI * self.__radius ** 2 * self.__height
+        return round(self.__PI * self.__radius ** 2 * self.__height, 2)
 
 
 if __name__ == "__main__":
