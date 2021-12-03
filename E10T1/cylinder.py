@@ -19,3 +19,8 @@ class Cylinder(GeometricObject):
 
     def get_volume(self):
         return self.__PI * self.__radius**2 * self.__height
+
+
+if __name__ == "__main__":
+    c = Cylinder(3, 4, "pink", False)
+    print(c.get_area())
