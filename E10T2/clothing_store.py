@@ -33,7 +33,7 @@ if __name__ == "__main__":
     c = ClothingStore(10000)
     c.procure(1, 1000)
     print(c.get_status())  # 9200, 0, 0, 0, 1000
-    c.sell(4, 1000)
+    c.sell(5, 1000)
     c.get_status()  # 13200, 0, 0, 0, 0
     c.pay_rent_and_loan(1000)
     c.get_status()  # 12200, 0, 0, 0, 0
