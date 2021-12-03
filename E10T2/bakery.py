@@ -14,7 +14,7 @@ class Bakery(Shop):
         return super().sell(0.75*price_per_unit, units)
 
     def produce(self, costs_per_unit):
-        while self.__dough >= 0 and self._capital >= costs_per_unit:
+        while self.__dough > 0 and self._capital >= costs_per_unit:
             self.__bread += 1
             self.__dough -= 1
             self._capital -= costs_per_unit
@@ -34,7 +34,7 @@ class Bakery(Shop):
         self.__bread = units
 
     def pay_rent_and_loan(self, rent):
-        super().pay_rent_and_loan(0.8*rent)
+        return super().pay_rent_and_loan(0.8*rent)
 
     def get_status(self):
         stats = list(super().get_status())
@@ -52,3 +52,7 @@ if __name__ == "__main__":
     b.get_status()  # 11000, 0, 0, 0, 0, 0
     b.pay_rent_and_loan(1000)
     b.get_status()  # 10200, 0, 0, 0, 0, 0
+    bakery = Bakery(1000)
+    bakery.take_loan(0.1, 1000)
+    actual = bakery.pay_rent_and_loan(100)
+    print(actual)
