@@ -3,9 +3,9 @@
 # The purpose of this file is illustrating the class usages. This script
 # is irrelevant for the grading and you can freely change its contents.
 
-from public.bakery import Bakery
-from public.clothing_store import ClothingStore
-from public.shopping_center import ShoppingCenter
+from bakery import Bakery
+from clothing_store import ClothingStore
+from shopping_center import ShoppingCenter
 
 bakery = Bakery(1000) # (capital, loan, interest, initial_loan_amount, dough, bread) = (1000, 0, 0, 0, 0, 0)
 bakery.take_loan(0.1, 1000) # (2000, 1000, 0.1, 1000, 0, 0)
