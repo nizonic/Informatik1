@@ -1,4 +1,4 @@
-from public.geometric_object import GeometricObject
+from geometric_object import GeometricObject
 
 
 class Cube(GeometricObject):
