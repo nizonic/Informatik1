@@ -2,7 +2,7 @@ from geometric_object import GeometricObject
 
 
 class Cylinder(GeometricObject):
-    def __init__(self, radius:float, height:float, color:str, filled:bool):
+    def __init__(self, radius: float, height: float, color: str, filled: bool):
         super().__init__(color, filled)
         self.__PI = 3.14
         self.__radius = radius
@@ -15,10 +15,10 @@ class Cylinder(GeometricObject):
         return self.__height
 
     def get_area(self):
-        return self.__PI * self.__radius**2 + 2 * self.__PI * self.__radius * self.__height
+        return self.__PI * self.__radius ** 2 + 2 * self.__PI * self.__radius * self.__height
 
     def get_volume(self):
-        return self.__PI * self.__radius**2 * self.__height
+        return self.__PI * self.__radius ** 2 * self.__height
 
 
 if __name__ == "__main__":
