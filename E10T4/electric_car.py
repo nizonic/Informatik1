@@ -6,9 +6,13 @@
 
 from car import Car
 
-class ElectricCar:
+class ElectricCar(Car):
 
     def __init__(self, battery_size, battery_range_km):
+        if not isinstance(battery_size, float) or not isinstance(battery_range_km, float):
+            raise Warning
+        if battery_size < 0 or battery_range_km < 0:
+            raise Warning
         self.__c_max = battery_size             #maximum capacity
         self.__range = battery_range_km         #max range with full battery
         self.__c = battery_size                 #current juice left
