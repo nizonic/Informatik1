@@ -4,7 +4,7 @@
 # UML diagram. Do not change the class name or the method signatures
 # or the automated grading won't work.
 
-from public.car import Car
+from car import Car
 
 class CombustionCar:
 
