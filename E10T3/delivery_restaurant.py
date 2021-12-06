@@ -4,12 +4,13 @@
 # UML diagram. Do not change the class name or the method signatures
 # or the automated grading won't work.
 
-from public.restaurant import Restaurant
+from restaurant import Restaurant
 
-class DeliveryRestaurant:
+class DeliveryRestaurant(Restaurant):
 
     def __init__(self, name, cuisine_type, delivery_radius, is_open=False):
-        pass
+        super().__init__(name, cuisine_type, is_open)
+        self.__delivery_radius = delivery_radius
 
     def is_in_range(self, distance):
-        pass
+        return distance <= self.__delivery_radius

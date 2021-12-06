@@ -4,19 +4,24 @@
 # UML diagram. Do not change the class name or the method signatures
 # or the automated grading won't work.
 
-from public.restaurant import Restaurant
+from restaurant import Restaurant
 
 
-class OnsiteRestaurant:
+class OnsiteRestaurant(Restaurant):
 
     def __init__(self, name, cuisine_type, num_tables, is_open=False):
-        pass
-
+        super().__init__(name, cuisine_type, is_open)
+        self.__tables = num_tables
+        self.__available_tables = num_tables
     def occupy_table(self):
-        pass
+        if self.__available_tables <= 0:
+            raise Warning("No available tables")
+        self.__available_tables -= 1
 
     def free_table(self):
-        pass
+        if self.__available_tables == self.__tables:
+            raise Warning("No customers currently")
+        self.__available_tables += 1
 
     def get_available_tables(self):
-        pass
+        return self.__available_tables

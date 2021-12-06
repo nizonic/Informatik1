@@ -9,32 +9,40 @@ import copy
 class Restaurant:
 
     def __init__(self, name, cuisine_type, is_open = False):
-        pass
+        self.__name = name
+        self.__cuisine_type = cuisine_type
+        self.__open = is_open
+        self.__menu = {}
+        self.__sales = 0
 
     def describe_restaurant(self):
-        pass
+        return f"This is the restaurant {self.__name}, serving {self.__cuisine_type}"
 
     def open_restaurant(self):
-        pass
+        self.__open = True
 
     def close_restaurant(self):
-        pass
+        self.__open = False
 
     def is_open(self):
-        pass
+        return self.__open
 
     def add_consumption_unit(self, name, price):
-        pass
+        self.__menu[name] = price
 
     def remove_consumption_unit(self, name):
-        pass
+        self.__menu.pop(name, None)
 
     def get_menu(self):
-        pass
+        return copy.deepcopy(self.__menu)
 
     def sell_unit(self, name):
-        pass
-
+        if not self.__open:
+            raise Warning("Restaurant is closed")
+        try:
+            self.__sales += self.__menu[name]
+        except:
+            raise Warning("Item not on menu")
     def get_sales(self):
-        pass
+        return self.__sales
 
