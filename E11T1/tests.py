@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from unittest import TestCase
-
+from bank_account import BankAccount
+from currency_converter import convert
 
 # You need to add missing imports to make the test work!
 
@@ -19,6 +20,19 @@ class PrivateFunctionalTestSuite(TestCase):
         expected = 89.0
         self.assertAlmostEqual(expected, actual, delta=0.0001)
 
+    def test_2_currency(self):
+        with self.assertRaises(Warning) as ctx:
+            convert(100, "CHF", "GBR")
+
+    def test_3_currency(self):
+        with self.assertRaises(Warning) as ctx:
+            convert(100, "GBR", "CHF")
+
+    def test_4_withdraw(self):
+        sut = BankAccount()
+        sut.deposit(100)
+        with self.assertRaises(Warning) as ctx:
+            sut.withdraw(100.1)
     # This current test suite only contains one very basic test case. By now,
     # you have some experience in writing test cases. We strongly encourage
     # you to implement further test cases. The additional tests can be run via
