@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import random
 from random import choice
 class GameRunner(object):
 
@@ -7,8 +8,7 @@ class GameRunner(object):
         self.columns = 2
 
     def generate_hex_codes(self):
-        s = "0x" + 4 * choice("0123456789ABCDEF")
-        return [s] * (self.rows * self.columns)
+        return ["0x" + choice("0123456789ABCDEF") + choice("0123456789ABCDEF") + choice("0123456789ABCDEF") + choice("0123456789ABCDEF") for x in range(self.columns * self.rows)]
 
 
 if __name__ == "__main__":
