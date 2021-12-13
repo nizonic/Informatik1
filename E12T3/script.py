@@ -36,5 +36,5 @@ class WordLogic(object):
 
 if __name__ == "__main__":
     g = WordLogic(10, 7)
-    print(g.is_similar("babui", "bababui", 0.8))
+    print(g.is_similar("babui", "babababui", 0.8))
     print(g.word_selection())
